@@ -24,30 +24,12 @@ set (GTEST_INCLUDE_DIR
      "Path to Google Tests include"
      FORCE)
 
-
-#find_path (GTEST_INCLUDE_DIR gtests/gtest.h)
-
-#if (GTEST_INCLUDE_DIR)
-  #add_subdirectory (
-    #${GTEST_ROOT_DIR}
-    #gtest
-   #)
-#endif (GTEST_INCLUDE_DIR)
-
 enable_testing ()
-
-#find_library (GMOCK_LIB gmock)
-#find_library (GMOCK_MAIN_LIB gmock_main)
-#find_path (GTEST_SRC_DIR gtest.cc PATHS /usr/src/gtest/src)
 
 set (GMOCK_LIB gmock)
 set (GMOCK_MAIN_LIB gmock_main)
 
 message ("${GTEST_SRC_DIR} - ${GMOCK_LIB} - ${GMOCK_MAIN_LIB}")
-
-#if (GTEST_SRC_DIR AND
-    #GMOCK_LIB AND
-    #GMOCK_MAIN_LIB)
 
 if (GMOCK_LIB AND GMOCK_MAIN_LIB)
 
@@ -76,7 +58,3 @@ if (GMOCK_LIB AND GMOCK_MAIN_LIB)
   add_custom_target (check COMMAND ../gtest-test-matrix)
 
 endif (GMOCK_LIB AND GMOCK_MAIN_LIB)
-
-#endif (GTEST_SRC_DIR AND
-       #GMOCK_LIB AND
-       #GMOCK_MAIN_LIB)
