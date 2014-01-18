@@ -1,9 +1,8 @@
 #include "Matrix4x4.h"
+
 #include <cmath>
 #include <limits>
 #include <string.h>
-
-#include <stdio.h>
 
 namespace matrix
 {
