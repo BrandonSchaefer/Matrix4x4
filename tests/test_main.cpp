@@ -16,7 +16,6 @@
 * Authored by: Brandon Schaefer <brandontschaefer@gmail.com>
 */
 
-
 #include <gtest/gtest.h>
 #include <stdlib.h>
 
