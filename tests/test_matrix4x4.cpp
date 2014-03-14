@@ -99,6 +99,19 @@ TEST(TestMatrix4x4, TestMatrixPerspective)
   EXPECT_NEAR(gl_m.m[3][2], -2.1f, 0.01f);
 }
 
+TEST(TestMatrix4x4, TestMatrixOrthographic)
+{
+  Matrix4x4 m;
+  m.Orthographic(-1.0, 1.0, -1.0f, 1.0f, 10.0f, 100.0f);
+
+  GLMatrix4x4 gl_m = m.GetGLMatrix();
+
+  EXPECT_NEAR(gl_m.m[0][0], 1.00f, 0.01f);
+  EXPECT_NEAR(gl_m.m[1][1], 1.00f, 0.01f);
+  EXPECT_NEAR(gl_m.m[2][2], -0.02f, 0.01f);
+  EXPECT_NEAR(gl_m.m[3][2], -1.22f, 0.01f);
+}
+
 TEST(TestMatrix4x4, TestMatrixRotate)
 {
   Matrix4x4 m;

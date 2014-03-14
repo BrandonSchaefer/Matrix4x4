@@ -178,6 +178,28 @@ void Matrix4x4::Rotate(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
   }
 }
 
+void Matrix4x4::Orthographic(GLfloat left, GLfloat right, GLfloat bottom,
+                             GLfloat top, GLfloat near_z, GLfloat far_z)
+{
+  float delta_x = right - left;
+  float delta_y = top - bottom;
+  float delta_z = far_z - near_z;
+  GLMatrix4x4 ortho;
+
+  if (delta_x == 0.0f || delta_y == 0.0f || delta_z == 0.0f)
+    return;
+
+  ortho.m[0][0] = 2.0f / delta_x;
+  ortho.m[3][0] = -(right + left) / delta_x;
+  ortho.m[1][1] = 2.0f / delta_y;
+  ortho.m[3][1] = -(top + bottom) / delta_y;
+  ortho.m[2][2] = -2.0f / delta_z;
+  ortho.m[3][2] = -(near_z + far_z) / delta_z;
+
+  Matrix4x4 new_m = *this * Matrix4x4(ortho);
+  CopyGLMatrix(&matrix_, new_m.GetGLMatrix());
+}
+
 GLMatrix4x4 Matrix4x4::GetGLMatrix() const
 {
   return matrix_;

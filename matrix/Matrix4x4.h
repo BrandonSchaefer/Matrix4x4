@@ -44,6 +44,9 @@ public:
   void Perspective(GLfloat fovy, GLfloat aspect, GLfloat near_z, GLfloat far_z);
   void Rotate(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
 
+  void Orthographic(GLfloat left, GLfloat right, GLfloat bottom,
+                    GLfloat top, GLfloat near_z, GLfloat far_z);
+
   Matrix4x4 operator*(Matrix4x4 const& m) const;
   bool operator==(Matrix4x4 const& m) const;
   bool operator!=(Matrix4x4 const& m) const;
